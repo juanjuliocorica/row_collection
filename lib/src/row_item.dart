@@ -25,9 +25,9 @@ class RowItem extends StatelessWidget {
   final Widget description;
 
   const RowItem({
-    Key key,
-    @required this.title,
-    @required this.description,
+    Key? key,
+    required this.title,
+    required this.description,
   })  : assert(title != null),
         assert(description != null),
         super(key: key);
@@ -58,9 +58,9 @@ class RowItem extends StatelessWidget {
   factory RowItem.text(
     String title,
     String description, {
-    Key key,
-    TextStyle titleStyle,
-    TextStyle descriptionStyle,
+    Key? key,
+    TextStyle? titleStyle,
+    TextStyle? descriptionStyle,
   }) {
     return RowItem(
       key: key,
@@ -81,10 +81,10 @@ class RowItem extends StatelessWidget {
   /// value with a boolean value, which can be represented with an icon.
   factory RowItem.icon(
     String title,
-    bool status, {
-    Key key,
-    TextStyle titleStyle,
-    Color iconColor,
+    bool? status, {
+    Key? key,
+    TextStyle? titleStyle,
+    Color? iconColor,
     double size = 16,
   }) {
     return RowItem(
@@ -107,10 +107,10 @@ class RowItem extends StatelessWidget {
   factory RowItem.clickable(
     String title,
     String description, {
-    Key key,
-    TextStyle titleStyle,
-    TextStyle descriptionStyle,
-    VoidCallback onTap,
+    Key? key,
+    TextStyle? titleStyle,
+    TextStyle? descriptionStyle,
+    VoidCallback? onTap,
   }) {
     return RowItem(
       key: key,
@@ -136,7 +136,7 @@ class RowItem extends StatelessWidget {
 
   /// Returns an icon based on the [value] variable.
   /// Various [Icon] parameters can be set as well.
-  static Icon _icon(bool value, {Color color, double size}) {
+  static Icon _icon(bool? value, {Color? color, double? size}) {
     final Color finalColor = color ??
         (value == null
             ? IconColor.empty
@@ -154,9 +154,9 @@ class RowItem extends StatelessWidget {
   /// Various of its paremeters can be set.
   static Text _text(
     String text, {
-    TextStyle style,
+    TextStyle? style,
     bool clickable = false,
-    @required TextPosition position,
+    required TextPosition position,
   }) {
     return Text(
       text,

@@ -4,19 +4,19 @@ import 'package:row_collection/row_collection.dart';
 /// This widget helps developers create a layout, full of widgets,
 /// with a [Separator.spacer] widget. You can stablish other parameters.
 class RowLayout extends StatelessWidget {
-  final List<Widget> children;
+  final List<Widget>? children;
   final EdgeInsets padding;
   final double space;
 
   final MainAxisAlignment mainAxisAlignment;
   final MainAxisSize mainAxisSize;
   final CrossAxisAlignment crossAxisAlignment;
-  final TextDirection textDirection;
+  final TextDirection? textDirection;
   final VerticalDirection verticalDirection;
-  final TextBaseline textBaseline;
+  final TextBaseline? textBaseline;
 
   const RowLayout({
-    Key key,
+    Key? key,
     this.children,
     this.padding = EdgeInsets.zero,
     this.space = 12,
@@ -39,7 +39,7 @@ class RowLayout extends StatelessWidget {
         textDirection: textDirection,
         verticalDirection: verticalDirection,
         textBaseline: textBaseline,
-        children: _intercalateSpacer(children),
+        children: _intercalateSpacer(children!),
       ),
     );
   }
@@ -47,14 +47,14 @@ class RowLayout extends StatelessWidget {
   /// Named constructor meant to be used inside a [Scaffold] widget.
   /// It automatically applies a padding of [16] for all edges.
   factory RowLayout.body({
-    @required List<Widget> children,
+    required List<Widget> children,
     double space = 12,
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
     MainAxisSize mainAxisSize = MainAxisSize.max,
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
-    TextDirection textDirection,
+    TextDirection? textDirection,
     VerticalDirection verticalDirection = VerticalDirection.down,
-    TextBaseline textBaseline,
+    TextBaseline? textBaseline,
   }) {
     return RowLayout(
       children: children,
@@ -72,13 +72,13 @@ class RowLayout extends StatelessWidget {
   /// Named constructor meant to be used inside a [Scaffold] widget, ment for a stack of [Card]s.
   /// It automatically applies a padding of [8] for all edges, and a space of [4].
   factory RowLayout.cards({
-    @required List<Widget> children,
+    required List<Widget> children,
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
     MainAxisSize mainAxisSize = MainAxisSize.max,
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
-    TextDirection textDirection,
+    TextDirection? textDirection,
     VerticalDirection verticalDirection = VerticalDirection.down,
-    TextBaseline textBaseline,
+    TextBaseline? textBaseline,
   }) {
     return RowLayout(
       children: children,
