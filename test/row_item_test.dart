@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:row_collection/row_collection.dart';
+import 'package:row_item/row_item.dart';
 
 void main() {
-  Widget makeWidgetTestable(Widget child) =>
-      MaterialApp(home: Scaffold(body: child));
+  Widget makeWidgetTestable(Widget child) => MaterialApp(home: Scaffold(body: child));
 
   testWidgets('RowItem displays correct text', (tester) async {
     await tester.pumpWidget(
@@ -34,51 +33,12 @@ void main() {
     expect(find.text('description'), findsOneWidget);
   });
 
-  testWidgets('RowItem.icon displays correct text & icons', (tester) async {
-    await tester.pumpWidget(
-      makeWidgetTestable(
-        RowItem.icon(
-          'true',
-          true,
-        ),
-      ),
-    );
-
-    expect(find.text('true'), findsOneWidget);
-    expect(find.byIcon(Icons.check_circle), findsOneWidget);
-
-    await tester.pumpWidget(
-      makeWidgetTestable(
-        RowItem.icon(
-          'false',
-          false,
-        ),
-      ),
-    );
-
-    expect(find.text('false'), findsOneWidget);
-    expect(find.byIcon(Icons.cancel), findsOneWidget);
-
-    await tester.pumpWidget(
-      makeWidgetTestable(
-        RowItem.icon(
-          'null',
-          null,
-        ),
-      ),
-    );
-
-    expect(find.text('null'), findsOneWidget);
-    expect(find.byIcon(Icons.help), findsOneWidget);
-  });
-
-  testWidgets('RowItem.clickable displays correct text & dialog',
-      (tester) async {
+  testWidgets('RowItem.clickable displays correct text & dialog', (tester) async {
     bool pressed1 = false, pressed2 = false;
 
     await tester.pumpWidget(
       makeWidgetTestable(
-        RowItem.clickable(
+        RowItem.tap(
           'title1',
           'description1',
           onTap: () => pressed1 = true,
@@ -93,7 +53,7 @@ void main() {
 
     await tester.pumpWidget(
       makeWidgetTestable(
-        RowItem.clickable(
+        RowItem.tap(
           'title2',
           'description2',
         ),
